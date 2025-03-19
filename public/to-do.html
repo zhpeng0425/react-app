@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>to-do</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      #root {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .to-do-list {
+        width: 100%;
+        padding: 10px;
+        display: grid;
+        gap: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .to-do-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 5px 5px 3px 5px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        word-break: break-all;
+        cursor: pointer;
+      }
+      .to-do-item > input[type="checkbox"] {
+        margin-right: 5px;
+      }
+      .to-do-item.done {
+        color: rgb(118, 118, 118);
+        text-decoration: line-through;
+      }
+      .to-do-item.level1 {
+        border-color: #007175;
+      }
+      .to-do-item.level2 {
+        border-color: #c67915;
+      }
+      .to-do-item.level3 {
+        border-color: #6c216d;
+      }
+    </style>
+  </head>
+  <body onload="onLoad()">
+    <div id="root"></div>
+    <script>
+      function onLoad() {
+        const app = ToDoApp();
+        createRoot(document.getElementById('root')).render(app);
+      }
+
+      function createRoot(rootElement) {
+        const root = {
+          render: (app) => {
+            rootElement && rootElement.appendChild(app);
+          }
+        };
+        return root;
+      }
+
+      function ToDoApp() {
+        const toDoListData = [
+          { id: 1, content: '待办事项1', level: 1, isDone: true },
+          { id: 2, content: '待办事项2', level: 2, isDone: false },
+          { id: 3, content: '待办事项3', level: 3, isDone: false },
+          { id: 4, content: '待办事项4', isDone: false }
+        ];
+
+        let html = '<div class="to-do-list">';
+        toDoListData.forEach((item) => {
+          let className = 'to-do-item';
+          switch (item.level) {
+            case 1:
+              className += ' level1';
+              break;
+            case 2:
+              className += ' level2';
+              break;
+            case 3:
+              className += ' level3';
+              break;
+            default:
+              break;
+          }
+          if (item.isDone) {
+            className += ' done';
+          }
+          html += `
+            <label class="${className}">
+              ${item.isDone ? '<input type="checkbox" checked />' : '<input type="checkbox" />'}${item.content}
+            </label>
+          `;
+        });
+        html += '</div>';
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const toDoListElement = doc.body.firstChild;
+
+        const itemElements = toDoListElement.querySelectorAll('.to-do-item');
+        if (itemElements.length > 0) {
+          itemElements.forEach((element) => {
+            element.addEventListener('click', onItemClick, false);
+          });
+        }
+
+        return toDoListElement;
+      }
+
+      function onItemClick(e) {
+        e.preventDefault();
+
+        const itemElement = e.target.closest('.to-do-item');
+        const checkboxElement = itemElement.querySelector('input[type="checkbox"]');
+        const className = itemElement.className;
+
+        if (className.indexOf('done') === -1) {
+          itemElement.className = className + ' done';
+          checkboxElement.checked = true;
+        } else {
+          itemElement.className = className.replace(' done', '');
+          checkboxElement.checked = false;
+        }
+      }
+
+    </script>
+  </body>
+</html>
