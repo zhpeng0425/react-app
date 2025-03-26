@@ -1,0 +1,26 @@
+.to-do-list-wrapper {
+  min-height: 30px;
+}
+.to-do-list-header {
+  padding: 5px;
+}
+.to-do-list-title {
+  font-size: 15px;
+  font-weight: bold;
+}
+.to-do-list-size {
+  color: #f00;
+}
+.to-do-list {
+  width: 100%;
+  padding: 10px;
+  display: grid;
+  gap: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.to-do-list-empty {
+  text-align: center;
+  font-size: 14px;
+  color: #ccc;
+}

@@ -1,0 +1,27 @@
+.to-do-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 5px 5px 3px 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  word-break: break-all;
+  cursor: pointer;
+}
+.to-do-item > input[type='checkbox'] {
+  margin-right: 5px;
+}
+.to-do-item.done {
+  color: rgb(118, 118, 118);
+  text-decoration: line-through;
+}
+.to-do-item.level1 {
+  border-color: #007175;
+}
+.to-do-item.level2 {
+  border-color: #c67915;
+}
+.to-do-item.level3 {
+  border-color: #6c216d;
+}
