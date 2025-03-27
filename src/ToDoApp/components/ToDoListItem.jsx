@@ -15,11 +15,8 @@ export default function ToDoListItem({ item, onClick }) {
     default:
       break;
   }
-  if (item.isDone) {
-    className += ' done';
-  }
   return (
-    <label className={className}>
+    <div className={className}>
       <input
         type="checkbox"
         checked={item.isDone}
@@ -27,7 +24,9 @@ export default function ToDoListItem({ item, onClick }) {
           onClick(item.id);
         }}
       />
-      <span>{item.text}</span>
-    </label>
+      <div className={item.isDone ? 'text done' : 'text'}>{item.text}</div>
+      <button className="btn btn-edit">编辑</button>
+      <button className="btn btn-delete">删除</button>
+    </div>
   );
 }

@@ -1,0 +1,8 @@
+.to-do-list-header {
+  padding: 5px;
+}
+.to-do-list-title {
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+}

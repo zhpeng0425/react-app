@@ -1,28 +1,16 @@
-import ToDoListItem from './ToDoListItem';
+import ToDoListHeader from './ToDoListHeader.jsx';
+import ToDoListItem from './ToDoListItem.jsx';
 import './ToDoList.css';
 
 export default function ToDoList({ title, list, onItemClick }) {
   return (
-    <div className="to-do-list-wrapper">
-      <div className="to-do-list-header">
-        <div className="to-do-list-title">
-          {title}
-          <span className="to-do-list-size">({list.length})</span>
-        </div>
-      </div>
+    <section className="to-do-list-section">
+      <ToDoListHeader title={title} size={list.length} />
       <div className="to-do-list">
-        {list.length === 0 ? (
-          <ToDoListEmpty />
-        ) : (
-          list.map((item) => {
-            return <ToDoListItem key={item.id} item={item} onClick={onItemClick} />;
-          })
-        )}
+        {list.map((item) => {
+          return <ToDoListItem key={item.id} item={item} onClick={onItemClick} />;
+        })}
       </div>
-    </div>
+    </section>
   );
-}
-
-function ToDoListEmpty() {
-  return <div className="to-do-list-empty">暂无事项</div>;
 }
