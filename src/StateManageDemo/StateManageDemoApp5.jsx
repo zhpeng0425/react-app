@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './StateManageDemoApp.css';
 
-export default function Scoreboard() {
+export default function StateManageDemoApp5() {
   const [isPlayerA, setIsPlayerA] = useState(true);
+  const ref = useRef(0);
+
+  console.log(ref.current);
   return (
     <div>
       {/* {isPlayerA ? <Counter person="玩家A" /> : <Counter person="玩家B" />} */}
@@ -11,6 +14,7 @@ export default function Scoreboard() {
       {isPlayerA ? <Counter person="玩家A" key="A" /> : <Counter person="玩家B" key="B" />}
       <button
         onClick={() => {
+          ref.current++;
           setIsPlayerA(!isPlayerA);
         }}
       >

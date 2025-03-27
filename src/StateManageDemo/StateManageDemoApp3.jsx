@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './StateManageDemoApp.css';
 
-export default function App() {
+export default function StateManageDemoApp3() {
   const [isFancy, setIsFancy] = useState(false);
   if (isFancy) {
     return (

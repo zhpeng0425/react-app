@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './StateManageDemoApp.css';
 
-export default function App() {
+export default function StateManageDemoApp() {
   const [showB, setShowB] = useState(true);
+
   return (
     <div>
       <div style={{ display: 'flex' }}>
@@ -28,10 +29,13 @@ function Counter() {
 
   let className = 'counter';
 
+  const handleClick = () => {
+    setScore(score + 1);
+  };
   return (
     <div className={className}>
       <h1>{score}</h1>
-      <button onClick={() => setScore(score + 1)}>加一</button>
+      <button onClick={handleClick}>加一</button>
     </div>
   );
 }
