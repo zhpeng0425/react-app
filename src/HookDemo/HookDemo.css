@@ -1,0 +1,17 @@
+.counter-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+.counter-wrapper .count {
+  width: 60px;
+  text-align: center;
+}
+.counter-wrapper .btn {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1;
+  border-radius: 50%;
+}

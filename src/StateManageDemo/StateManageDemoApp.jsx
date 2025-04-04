@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import './StateManageDemoApp.css';
 
 export default function StateManageDemoApp() {
   const [showB, setShowB] = useState(true);
+
+  let refValue = useRef(0);
+  console.log(refValue.current);
 
   return (
     <div>
@@ -15,6 +18,7 @@ export default function StateManageDemoApp() {
           type="checkbox"
           checked={showB}
           onChange={(e) => {
+            refValue.current++;
             setShowB(e.target.checked);
           }}
         />

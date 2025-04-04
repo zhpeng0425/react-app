@@ -6,9 +6,7 @@ export default function StateManageDemoApp4() {
   return (
     <div>
       {isFancy ? (
-        <div>
-          <Counter isFancy={true} />
-        </div>
+        <Counter isFancy={true} />
       ) : (
         <section>
           <Counter isFancy={false} />
